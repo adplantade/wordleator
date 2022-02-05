@@ -18,6 +18,9 @@ for i in range(6):
 		print("Ce mot n'est pas possible")
 		motChoix = input("mot entré : ").upper()
 	res = input("couleurs (N/J/V) : ").upper()
+	if(res=="V"*lettres):
+		print("Eh, marche pas si mal ce prog'")
+		quit()
 	for ind in range(len(res)):
 		if(res[ind]=="N"):
 			mots[:] = filterfalse(lambda x: motChoix[ind] in x, mots)
