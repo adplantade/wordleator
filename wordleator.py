@@ -7,8 +7,12 @@ if(len(sys.argv)!=2):
 	quit()
 lettres = int(sys.argv[1])
 mots = open(f"{lettres}lettres.txt","r").read().splitlines()
+motChoix = ""
+tmp = open(f"{lettres}lettres.txt","r").read().splitlines()
 for i in range(6):
-	print(f"mot random : {choice(mots)}")
+	for ind in motChoix:
+		tmp[:] = filterfalse(lambda x: ind in x, mots)
+	print(f"mot random : {choice(mots)}, mot couvrant : {choice(tmp) if(len(tmp)>0) else 'rien'}" if(len(mots)>30) else mots)
 	motChoix = input("mot entré : ").upper()
 	while(motChoix not in mots):
 		print("Ce mot n'est pas possible")
